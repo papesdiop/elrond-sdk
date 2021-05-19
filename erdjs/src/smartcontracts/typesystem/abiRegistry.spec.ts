@@ -69,4 +69,11 @@ describe("test abi registry", () => {
         assert.instanceOf((<StructType>getLotteryInfo.output[0].type).fields[5].type, ListType);
         assert.instanceOf((<StructType>getLotteryInfo.output[0].type).fields[5].type.getFirstTypeParameter(), AddressType);
     });
+
+    it("should map EsdtLocalRole", async () => {
+        let registry = await loadAbiRegistry([
+            "src/testdata/sc-proxy-dex.abi.json",
+        ]);
+        assert.lengthOf(registry.interfaces, 1);
+    });
 });

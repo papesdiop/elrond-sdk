@@ -3,7 +3,7 @@ import { AddressType } from "./address";
 import { BooleanType } from "./boolean";
 import { BytesType } from "./bytes";
 import { CompositeType } from "./composite";
-import { EnumType } from "./enum";
+import { EnumType, EnumVariantDefinition } from "./enum";
 import { ListType, OptionType } from "./generic";
 import { H256Type } from "./h256";
 import {
@@ -72,6 +72,14 @@ export class TypeMapper {
             ["Address", new AddressType()],
             ["H256", new H256Type()],
             ["TokenIdentifier", new TokenIdentifierType()],
+            ["EsdtLocalRole", new EnumType("EsdtLocalRole", [
+                new EnumVariantDefinition("None", 0),
+                new EnumVariantDefinition("Mint", 1),
+                new EnumVariantDefinition("Burn", 2),
+                new EnumVariantDefinition("NftCreate", 3),
+                new EnumVariantDefinition("NftAddQuantity", 4),
+                new EnumVariantDefinition("NftBurn", 5)
+            ])],
         ]);
 
         for (const customType of customTypes) {
